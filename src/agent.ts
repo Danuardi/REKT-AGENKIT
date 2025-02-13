@@ -31,6 +31,7 @@ import {
   writeParticipateInMarketContract,
   writeSettleMarketContract,
 } from "./actions/RektPredictionMarket";
+import { getPolymarketData } from "./tools/polymarketTool";
 
 dotenv.config();
 
@@ -172,6 +173,7 @@ export async function initializeAgent() {
         getBinanceMarketData,
         getSubgraphMarketCreatedData,
         getSubgraphMarketSettledData,
+        getPolymarketData,
       ],
       checkpointSaver: memory,
       messageModifier: `
