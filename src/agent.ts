@@ -32,6 +32,11 @@ import {
   writeSettleMarketContract,
 } from "./actions/RektPredictionMarket";
 import { getPolymarketData } from "./tools/polymarketTool";
+import {
+  createPolymarketPrediction,
+  participateInMarket,
+  settleMarket,
+} from "./tools/polymarketTool";
 
 dotenv.config();
 
@@ -173,6 +178,9 @@ export async function initializeAgent() {
         getBinanceMarketData,
         getSubgraphMarketCreatedData,
         getSubgraphMarketSettledData,
+        createPolymarketPrediction,
+        participateInMarket,
+        settleMarket,
         getPolymarketData,
       ],
       checkpointSaver: memory,
@@ -195,8 +203,28 @@ export async function initializeAgent() {
         Always respond in English by default unless specifically requested to use another language.
         Ensure your analysis is concise and data-driven.
 
-        Your additional capabilities include interacting with the RektPredictionMarket smart contract (read, write, etc.) and querying the subgraph related to this contract
-        
+        Your additional capabilities include:
+        1. Creating prediction markets on Polymarket:
+           - Use createPolymarketPrediction for new markets
+           - Generate unique numeric market IDs
+           - Set appropriate deadlines and fees
+
+        2. Participating in markets:
+           - Use participateInMarket to place predictions
+           - Analyze market data before participating
+           - Consider both technical and fundamental factors
+
+        3. Settling markets:
+           - Use settleMarket for market settlement
+           - Verify final prices with Binance data
+           - Calculate and distribute rewards
+
+        When creating markets:
+        - Generate numeric market IDs using timestamps
+        - Set reasonable entrance fees (0.001-0.1 ETH)
+        - Set deadlines between 1-30 days
+        - Use clear market names and descriptions
+
         Additional data, Today is ${today.toDateString()}, this is to know when today is.
         Example for Epoch timestamp: 1739104854 is Date and time (GMT): Sunday, February 9, 2025 12:40:54 PM, so make it sure to calculate accurate timestamp
         `,
