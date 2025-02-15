@@ -7,10 +7,12 @@ import * as dotenv from "dotenv";
 // Load environment variables
 dotenv.config();
 
+// Initialize CLOB client
 export const initClobClient = () => {
   return new ClobClient(process.env.POLYMARKET_API_URL || "https://clob.polymarket.com", 137);
 };
 
+// Setup Polymarket provider with wallet provider
 export const setupPolymarketProvider = (provider: EvmWalletProvider) => {
   if (!provider) {
     throw new Error("No wallet provider available");
