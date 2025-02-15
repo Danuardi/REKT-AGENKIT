@@ -22,12 +22,12 @@ import { setupPolymarketProvider, getWalletProvider } from "../setup/polymarketS
 // Load environment variables
 config({ path: path.resolve(process.cwd(), ".env") });
 
-// Helper function untuk format date dengan benar
+// Helper function to format date correctly
 const formatDate = (date: Date): string => {
   return date.toISOString();
 };
 
-// Mock functions untuk simulate
+// Mock functions for simulation
 const mockMarketCreation = (marketData: {
   marketId: string;
   marketName: string;
@@ -80,7 +80,7 @@ const mockMarketData = (marketId: string) => {
   };
 };
 
-// Helper function untuk generate market ID
+// Helper function to generate market ID
 const generateMarketId = (prefix: string = "REKT") => {
   const timestamp = Date.now();
   return `${prefix}_${timestamp}`;
