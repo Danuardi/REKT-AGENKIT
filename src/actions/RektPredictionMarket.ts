@@ -4,8 +4,10 @@ import { chains } from "../agent";
 import { z } from "zod";
 import { encodeFunctionData, stringToHex } from "viem";
 
+// Contract name constant
 const contractName: string = "RektPredictionMarket";
 
+// Read market details from contract
 export const readMarketsContract = customActionProvider<EvmWalletProvider>({
   name: "readMarketsContract",
   description:
@@ -59,6 +61,7 @@ export const readMarketsContract = customActionProvider<EvmWalletProvider>({
   },
 });
 
+// Create a new prediction market
 export const writeCreateMarketContract = customActionProvider<EvmWalletProvider>({
   name: "writeCreateMarket",
   description: "Create a new prediction market",
@@ -85,6 +88,7 @@ export const writeCreateMarketContract = customActionProvider<EvmWalletProvider>
   },
 });
 
+// Participate in an existing market
 export const writeParticipateInMarketContract = customActionProvider<EvmWalletProvider>({
   name: "writeParticipateInMarket",
   description: "Participate in a market by providing a prediction",
@@ -111,6 +115,7 @@ export const writeParticipateInMarketContract = customActionProvider<EvmWalletPr
   },
 });
 
+// Settle a market with final results
 export const writeSettleMarketContract = customActionProvider<EvmWalletProvider>({
   name: "writeSettleMarket",
   description: "Settle a market with final price",
